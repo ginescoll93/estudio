@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="es" class="js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<title>Ginés Coll Zurita · Diseño y desarrollo web</title>
+<meta name="description" content="Diseño webs que venden y las programo yo. 7 años, más de 200 webs publicadas. Landing, web corporativa y tienda online, sin intermediarios.">
+<meta property="og:title" content="Ginés Coll Zurita · Diseño y desarrollo web">
+<meta property="og:description" content="Diseño webs que venden y las programo yo. Más de 200 webs publicadas.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/portrait-880.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/portrait-880.webp" type="image/webp">
+<style>
+:root{
+  --paper:#F6F7F4; --ink:#15161C; --cobalt:#2E3CF5; --cobalt-deep:#1B26B8;
+  --sun:#FFC83D; --mist:#DDE0EA; --soft:#5D6070; --line:#C9CCD8;
+  --r-s:6px; --r-m:14px; --r-l:28px;
+  --gut:clamp(16px,4vw,56px); --max:1240px;
+  --f:"Bricolage Grotesque",system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f);font-optical-sizing:auto;font-size:18px;line-height:1.55;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--cobalt);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:#fff;padding:10px 14px;z-index:99}
+.skip:focus{left:8px}
+.draft{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:60;background:var(--ink);color:#fff;font-size:13px;font-weight:600;padding:8px 14px;border-radius:999px;white-space:nowrap;box-shadow:0 8px 24px -10px rgba(0,0,0,.5)}
+.draft i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--sun);margin-right:8px;vertical-align:1px}
+.ex-tag{display:inline-block;margin-top:16px;font-size:14px;font-weight:600;color:var(--soft);background:var(--mist);padding:6px 12px;border-radius:999px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+h1,h2,h3{font-weight:700;line-height:1.02;letter-spacing:-.02em;margin:0}
+h2{font-size:clamp(40px,6.4vw,88px);font-variation-settings:"wdth" 82}
+p{margin:0}
+.lead{font-size:clamp(19px,1.6vw,22px);color:var(--soft);max-width:34em}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;gap:10px;font:inherit;font-weight:600;font-size:17px;text-decoration:none;padding:16px 26px;border-radius:999px;border:2px solid var(--ink);background:var(--ink);color:#fff;cursor:pointer;transition:background .25s,color .25s,transform .25s}
+.btn:hover{background:var(--cobalt);border-color:var(--cobalt)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:#fff}
+.btn.sun{background:var(--sun);border-color:var(--sun);color:var(--ink)}
+.btn.sun:hover{background:#fff;border-color:#fff}
+
+.js .hero-grid{visibility:hidden}
+/* Nav */
+.nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,box-shadow .3s}
+.nav.solid{background:rgba(246,247,244,.88);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+.brand{font-weight:800;font-size:19px;text-decoration:none;letter-spacing:-.01em}
+.brand span{color:var(--cobalt)}
+.nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
+.nav ul a{text-decoration:none;font-weight:500;font-size:16px}
+.nav ul a:hover{color:var(--cobalt)}
+.nav .btn{padding:11px 20px;font-size:15px}
+@media(max-width:860px){.nav ul{display:none}.nav .btn{padding:9px 15px;font-size:14px}}
+
+/* Hero */
+.hero{min-height:100svh;padding:120px 0 64px;display:flex;align-items:center;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(32px,5vw,80px);align-items:end}
+.hero h1{font-size:clamp(52px,9.2vw,148px);font-variation-settings:"wdth" 78;line-height:.92;letter-spacing:-.035em}
+.hero h1 .row{display:block}
+.hero h1 em{font-style:normal;color:var(--cobalt)}
+.hero .lead{margin-top:28px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.proof{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:40px;font-size:16px;color:var(--soft)}
+.proof b{color:var(--ink);font-weight:700}
+.portrait{position:relative;justify-self:end;width:min(100%,400px)}
+.portrait .frame{border-radius:var(--r-l);overflow:hidden;background:var(--cobalt);aspect-ratio:4/5;position:relative}
+.portrait img{width:100%;height:100%;object-fit:cover;transform-origin:50% 60%}
+.sticker{position:absolute;left:-28px;bottom:36px;background:var(--sun);border-radius:var(--r-m);padding:14px 18px;font-weight:700;font-size:15px;line-height:1.25;box-shadow:0 18px 40px -18px rgba(21,22,28,.5);transform:rotate(-4deg)}
+.sticker small{display:block;font-weight:500}
+.avail{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;background:#fff;border:1px solid var(--line);padding:8px 14px;border-radius:999px;margin-bottom:28px}
+.avail i{width:9px;height:9px;border-radius:50%;background:#1DB954;box-shadow:0 0 0 0 rgba(29,185,84,.5);animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 8px rgba(29,185,84,0)}100%{box-shadow:0 0 0 0 rgba(29,185,84,0)}}
+@media(max-width:860px){
+  .hero{padding:100px 0 48px;min-height:auto}
+  .hero-grid{grid-template-columns:1fr}
+  .portrait{justify-self:start;width:min(260px,70vw);order:-1}
+  .sticker{left:auto;right:-20px;bottom:20px}
+}
+
+/* Build: la secuencia fijada */
+.build{background:var(--ink);color:#fff;position:relative}
+.build-pin{height:100svh;padding-top:72px!important;padding-bottom:24px!important;display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,5vw,80px);align-items:center;max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+.build h2{font-size:clamp(32px,min(4.2vw,6vh),60px)}
+.steps{list-style:none;margin:clamp(16px,3vh,36px) 0 0;padding:0;display:grid;gap:6px}
+.steps li{display:grid;grid-template-columns:44px 1fr;gap:6px 12px;padding:clamp(8px,1.6vh,14px) 0;border-top:1px solid rgba(255,255,255,.14);opacity:.35;transition:opacity .35s}
+.steps li.on{opacity:1}
+.steps .n{font-weight:700;color:var(--sun);font-size:20px}
+.steps b{font-size:21px;font-weight:700}
+.steps p{grid-column:2;color:#B9BCCB;font-size:16px;line-height:1.45}
+/* navegador simulado */
+.browser{background:#fff;border-radius:var(--r-m);overflow:hidden;color:var(--ink);box-shadow:0 40px 80px -30px rgba(0,0,0,.7);aspect-ratio:16/11;display:flex;flex-direction:column}
+.bar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#ECEEF3;border-bottom:1px solid #DADDE6;flex:none}
+.dots{display:flex;gap:6px}.dots i{width:10px;height:10px;border-radius:50%;background:#C9CCD6}
+.url{flex:1;background:#fff;border-radius:6px;font-size:13px;padding:5px 10px;color:var(--soft);display:flex;gap:6px;align-items:center;min-height:26px}
+.url .lock{width:10px;height:10px;border-radius:2px;background:#1DB954;opacity:0}
+.stage{position:relative;flex:1}
+.layer{position:absolute;inset:0;padding:5% 6%;display:grid;grid-template-rows:auto 1fr auto;gap:5%}
+.l-nav{display:flex;justify-content:space-between;align-items:center}
+.l-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:6%;align-items:center}
+.l-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:4%}
+/* capa boceto */
+.wire *{border-color:#9EA3B5}
+.wire .blk{border:1.5px dashed #9EA3B5;border-radius:4px}
+.wire .logo{width:18%;height:14px}.wire .links{width:34%;height:10px}
+.wire .t1{height:22px;width:92%}.wire .t2{height:22px;width:70%;margin-top:8px}.wire .t3{height:10px;width:80%;margin-top:16px}.wire .b{height:24px;width:40%;margin-top:18px;border-radius:999px}
+.wire .img{aspect-ratio:1;width:100%;position:relative}
+.wire .img::before,.wire .img::after{content:"";position:absolute;inset:0;background:linear-gradient(to top right,transparent calc(50% - 1px),#9EA3B5 50%,transparent calc(50% + 1px))}
+.wire .img::after{transform:scaleX(-1)}
+.wire .card{height:70px}
+/* capa diseño final */
+.final{background:#FFF4DE;clip-path:inset(0 100% 0 0)}
+.final .logo{font-weight:800;font-size:clamp(11px,1.3vw,16px)}
+.final .logo span{color:#E0542E}
+.final .links{display:flex;gap:12px;font-size:clamp(8px,.9vw,12px);color:#5a4a3a}
+.final h4{font-size:clamp(16px,2.4vw,34px);line-height:1;margin:0;letter-spacing:-.02em;font-variation-settings:"wdth" 80}
+.final .sub{font-size:clamp(8px,.95vw,13px);color:#6b5a48;margin-top:8px}
+.final .cta{display:inline-block;margin-top:12px;background:#E0542E;color:#fff;font-weight:700;font-size:clamp(8px,.95vw,13px);padding:7px 14px;border-radius:999px;position:relative}
+.final .pic{aspect-ratio:1;border-radius:50% 50% 12px 12px;background:radial-gradient(circle at 50% 38%,#FFB86B 0 22%,transparent 23%),linear-gradient(160deg,#E0542E,#9C2E16);position:relative;overflow:hidden}
+.final .pic::after{content:"";position:absolute;left:18%;right:18%;bottom:-10%;height:52%;border-radius:50% 50% 0 0;background:#3B1D12}
+.final .card{background:#fff;border-radius:10px;padding:10% 8%;font-size:clamp(7px,.85vw,12px);font-weight:600;box-shadow:0 6px 16px -10px rgba(80,40,10,.4)}
+.final .card i{display:block;width:22px;height:22px;border-radius:7px;background:#FFD7A8;margin-bottom:8px}
+.final .txt{opacity:0}
+.orders{position:absolute;right:5%;top:8%;background:var(--ink);color:#fff;border-radius:12px;padding:10px 14px;font-size:clamp(9px,1vw,13px);opacity:0;transform:translateY(10px)}
+.orders b{display:block;font-size:clamp(16px,2vw,26px);color:var(--sun)}
+.cursor{position:absolute;width:18px;height:18px;left:70%;top:85%;opacity:0;z-index:3}
+@media(max-width:860px){
+  .build-pin{grid-template-columns:1fr;align-content:center;gap:24px;height:100svh}
+  .build h2{font-size:30px}
+  .steps{margin-top:14px}
+  .steps li{padding:8px 0;grid-template-columns:30px 1fr}
+  .steps li:not(.on) p{display:none}
+  .steps b{font-size:17px}.steps p{font-size:14px}
+  .build-intro p.lead{display:none}
+}
+
+/* Trabajos: scroll horizontal */
+.work{padding:110px 0 0;overflow:hidden;min-height:100svh}
+.work-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(24px,4vh,56px)}
+.track{display:flex;gap:28px;padding:0 var(--gut) 48px;width:max-content}
+.proj{width:min(560px,78vw,calc((100svh - 400px) * 1.333));flex:none}
+.shot{border-radius:var(--r-m);overflow:hidden;aspect-ratio:4/3;position:relative;box-shadow:0 30px 60px -36px rgba(21,22,28,.55)}
+.shot .in{position:absolute;inset:0;padding:8%;display:flex;flex-direction:column;justify-content:space-between;transform:scale(1.08)}
+.shot .mini-nav{display:flex;justify-content:space-between;font-size:13px;font-weight:600;opacity:.85}
+.shot .big{font-size:clamp(28px,3.6vw,48px);font-weight:800;line-height:.95;letter-spacing:-.03em;font-variation-settings:"wdth" 76;max-width:9em}
+.shot .pill{align-self:flex-start;font-size:13px;font-weight:700;padding:8px 14px;border-radius:999px}
+.meta{display:flex;justify-content:space-between;gap:16px;margin-top:18px;align-items:baseline}
+.meta h3{font-size:24px;font-weight:700;letter-spacing:-.01em}
+.meta p{color:var(--soft);font-size:16px}
+.meta .res{font-weight:700;color:var(--cobalt);white-space:nowrap;font-size:16px}
+.p1 .shot{background:#0F3D2E;color:#E9F5C9}.p1 .pill{background:#C9F26B;color:#0F3D2E}
+.p2 .shot{background:#F2E8FF;color:#2A0F57}.p2 .pill{background:#2A0F57;color:#fff}
+.p3 .shot{background:#FF5B2E;color:#fff}.p3 .pill{background:#fff;color:#FF5B2E}
+.p4 .shot{background:#E8F1F6;color:#0B2B40}.p4 .pill{background:#0B2B40;color:#fff}
+.p5 .shot{background:#1A1A1A;color:#F4D35E}.p5 .pill{background:#F4D35E;color:#1A1A1A}
+.p6 .shot{background:#FFF0E8;color:#7A2E1A}.p6 .pill{background:#7A2E1A;color:#fff}
+.deco{position:absolute;border-radius:50%;filter:blur(0)}
+.p1 .deco{width:46%;aspect-ratio:1;right:-8%;bottom:-14%;background:#C9F26B;opacity:.9}
+.p2 .deco{width:38%;aspect-ratio:1;right:8%;top:20%;background:#B794F6;border-radius:30% 70% 60% 40%}
+.p3 .deco{width:60%;height:30%;right:-10%;bottom:10%;background:#FFD23F;border-radius:999px;transform:rotate(-14deg)}
+.p4 .deco{width:34%;aspect-ratio:3/4;right:8%;bottom:8%;background:#7FB8D6;border-radius:999px 999px 16px 16px}
+.p5 .deco{width:42%;aspect-ratio:1;right:6%;top:14%;border:10px solid #F4D35E;background:transparent}
+.p6 .deco{width:40%;aspect-ratio:1;right:6%;bottom:6%;background:#F08A5D;border-radius:12px;transform:rotate(12deg)}
+@media(max-width:860px){
+  .work{padding-top:88px}
+  .track-wrap{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .track-wrap::-webkit-scrollbar{display:none}
+  .track{padding-bottom:24px}
+  .proj{scroll-snap-align:center}
+  .swipe-hint{display:block!important}
+}
+.swipe-hint{display:none;color:var(--soft);font-size:15px;padding:0 var(--gut) 80px}
+
+/* Por qué yo */
+.why{padding:140px 0;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,100px);align-items:start}
+.why h2 .line{display:block}
+.compare{margin-top:8px;display:grid;gap:14px}
+.row-c{display:grid;grid-template-columns:1fr 1fr;border-radius:var(--r-m);overflow:hidden;border:1px solid var(--line)}
+.row-c div{padding:18px 20px;font-size:16px;line-height:1.4}
+.row-c div:first-child{background:#F1F2F6;color:var(--soft)}
+.row-c div:last-child{background:#fff;font-weight:600}
+.row-c h4{margin:0 0 4px;font-size:13px;font-weight:600;color:var(--soft)}
+.compare .hdr{display:grid;grid-template-columns:1fr 1fr;font-weight:700;font-size:15px;padding:0 20px}
+.compare .hdr span:last-child{color:var(--cobalt)}
+@media(max-width:860px){.why{padding:96px 0}.why-grid{grid-template-columns:1fr}.row-c div{padding:14px;font-size:15px}.compare .hdr{padding:0 14px}}
+
+/* Cifras */
+.numbers{padding:120px 0}
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:56px}
+.num{border-top:2px solid var(--ink);padding-top:18px}
+.num strong{display:block;font-size:clamp(48px,6vw,84px);font-weight:800;letter-spacing:-.04em;line-height:1;font-variation-settings:"wdth" 76}
+.num span{display:block;margin-top:10px;color:var(--soft);font-size:16px;max-width:16em}
+@media(max-width:860px){.nums{grid-template-columns:1fr 1fr;gap:32px 16px}.numbers{padding:88px 0}}
+
+/* Opiniones */
+.voices{padding:0 0 140px}
+.quotes{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;margin-top:56px}
+.q{border-radius:var(--r-l);padding:clamp(28px,3.4vw,44px);display:flex;flex-direction:column;justify-content:space-between;gap:32px}
+.q blockquote{margin:0;font-size:clamp(22px,2.2vw,30px);line-height:1.25;font-weight:500;letter-spacing:-.01em}
+.q.big{background:var(--cobalt);color:#fff;grid-row:span 2}
+.q.big blockquote{font-size:clamp(26px,3vw,42px)}
+.q.s1{background:var(--sun)}
+.q.s2{background:var(--mist)}
+.who{display:flex;align-items:center;gap:12px;font-size:15px}
+.who i{width:44px;height:44px;border-radius:50%;flex:none;background:rgba(255,255,255,.3);display:grid;place-items:center;font-style:normal;font-weight:700}
+.q.s1 .who i,.q.s2 .who i{background:rgba(21,22,28,.12)}
+.who b{display:block;font-size:16px}
+@media(max-width:860px){.quotes{grid-template-columns:1fr}.q.big{grid-row:auto}.voices{padding-bottom:96px}}
+
+/* Precios */
+.pricing{padding:140px 0;background:var(--ink);color:#fff}
+.pricing .lead{color:#B9BCCB}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:64px;align-items:stretch}
+.plan{border:1px solid rgba(255,255,255,.18);border-radius:var(--r-l);padding:36px 30px;display:flex;flex-direction:column;gap:22px}
+.plan h3{font-size:26px;font-weight:700}
+.plan .price{font-size:52px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.plan .price small.pre{display:block;margin-bottom:6px}
+.plan .price small{font-size:17px;font-weight:500;color:#B9BCCB;letter-spacing:0}
+.plan p.desc{color:#B9BCCB;font-size:16px}
+.plan ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:16px;flex:1}
+.plan li{padding-left:26px;position:relative}
+.plan li::before{content:"";position:absolute;left:0;top:.45em;width:14px;height:8px;border-left:2.5px solid var(--sun);border-bottom:2.5px solid var(--sun);transform:rotate(-45deg)}
+.plan.star{background:#fff;color:var(--ink);border-color:#fff;position:relative}
+.plan.star p.desc,.plan.star .price small{color:var(--soft)}
+.plan.star li::before{border-color:var(--cobalt)}
+.plan .tag{position:absolute;top:-14px;left:30px;background:var(--sun);color:var(--ink);font-weight:700;font-size:14px;padding:6px 12px;border-radius:999px}
+.plan .btn{justify-content:center}
+.plan:not(.star) .btn{background:transparent;border-color:rgba(255,255,255,.5)}
+.plan:not(.star) .btn:hover{background:#fff;color:var(--ink);border-color:#fff}
+.guarantee{margin-top:40px;display:flex;gap:16px;align-items:center;color:#B9BCCB;font-size:16px;flex-wrap:wrap}
+.guarantee b{color:#fff}
+@media(max-width:960px){.plans{grid-template-columns:1fr}.pricing{padding:96px 0}}
+
+/* FAQ */
+.faq{padding:140px 0}
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,6vw,100px)}
+details{border-bottom:1px solid var(--line)}
+details:first-of-type{border-top:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;padding:24px 44px 24px 0;font-weight:600;font-size:20px;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";position:absolute;right:6px;top:50%;width:16px;height:16px;margin-top:-8px;background:linear-gradient(var(--ink),var(--ink)) center/16px 2px no-repeat,linear-gradient(var(--ink),var(--ink)) center/2px 16px no-repeat;transition:transform .3s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 0 24px;color:var(--soft);max-width:38em}
+@media(max-width:860px){.faq-grid{grid-template-columns:1fr}.faq{padding:96px 0}summary{font-size:18px}}
+
+/* CTA final */
+.end{background:var(--cobalt);color:#fff;padding:120px 0 0;overflow:hidden}
+.end h2{font-size:clamp(44px,7.4vw,120px);max-width:11em}
+.end .lead{color:#D6DAFF;margin-top:24px}
+.end .hero-ctas{margin-top:40px}
+.marquee{margin-top:110px;white-space:nowrap;font-weight:800;font-size:clamp(80px,15vw,240px);line-height:.85;letter-spacing:-.04em;font-variation-settings:"wdth" 75;color:var(--cobalt-deep)}
+.marquee span{display:inline-block;padding-right:.4em}
+footer{background:var(--cobalt-deep);color:#D6DAFF;font-size:15px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:28px;padding-bottom:28px}
+footer a{color:#fff}
+
+/* Movimiento reducido: todo visible, sin pin */
+@media (prefers-reduced-motion:reduce){
+  .final{clip-path:none}.final .txt,.orders{opacity:1;transform:none}
+  .avail i{animation:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<div class="draft" role="note"><i></i>Versión de prueba: datos y reseñas de ejemplo</div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Ginés Coll<span>.</span></a>
+    <ul>
+      <li><a href="#trabajos">Trabajos</a></li>
+      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#precios">Precios</a></li>
+      <li><a href="#faq">Preguntas</a></li>
+    </ul>
+    <a class="btn" href="#contacto">Pedir presupuesto</a>
+  </div>
+</header>
+
+<main id="main">
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="avail"><i></i>2 huecos libres para enero</div>
+      <h1 class="split-h"><span class="row">Diseño webs</span><span class="row">que venden.</span><span class="row"><em>Y las programo yo.</em></span></h1>
+      <p class="lead">Soy diseñador y desarrollador web. Desde hace 7 años hago webs para negocios que necesitan más clientes, no solo una web bonita. Sin agencias ni intermediarios: hablas conmigo de principio a fin.</p>
+      <div class="hero-ctas">
+        <a class="btn" href="#contacto">Pedir presupuesto</a>
+        <a class="btn ghost" href="#trabajos">Ver trabajos</a>
+      </div>
+      <div class="proof"><span><b>+200</b> webs publicadas</span><span><b>7 años</b> diseñando y programando</span><span><b>4,9/5</b> de valoración media</span></div>
+    </div>
+    <div class="portrait">
+      <div class="frame">
+        <picture>
+          <source type="image/webp" srcset="assets/portrait-440.webp 440w, assets/portrait-880.webp 880w" sizes="(max-width:860px) 260px, 400px">
+          <img src="assets/portrait-880.jpg" alt="Ginés Coll Zurita, diseñador y desarrollador web" width="880" height="1100" fetchpriority="high">
+        </picture>
+      </div>
+      <div class="sticker">Diseño + código<small>la misma persona</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- BUILD: de boceto a web -->
+<section class="build" id="proceso" aria-label="Proceso: de boceto a web publicada">
+  <div class="build-pin">
+    <div class="build-intro">
+      <h2>De un boceto a una web que vende, en 4 semanas.</h2>
+      <ol class="steps">
+        <li class="on"><span class="n">1</span><b>Estructura</b><p>Entiendo tu negocio y a tu cliente. Defino qué tiene que ver y en qué orden para que te contacte.</p></li>
+        <li><span class="n">2</span><b>Diseño</b><p>Colores, tipografía e imagen a medida de tu marca. Nada de plantillas.</p></li>
+        <li><span class="n">3</span><b>Contenido</b><p>Textos pensados para vender y fotos que cuentan lo que haces.</p></li>
+        <li><span class="n">4</span><b>Publicada y midiendo</b><p>La programo, la publico y la mido. Ves cuánta gente te escribe o te compra.</p></li>
+      </ol>
+    </div>
+    <div class="browser" aria-hidden="true">
+      <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url"><span class="lock"></span><span class="url-t">boceto-v1</span></div></div>
+      <div class="stage">
+        <div class="layer wire">
+          <div class="l-nav"><div class="blk logo"></div><div class="blk links"></div></div>
+          <div class="l-hero"><div><div class="blk t1"></div><div class="blk t2"></div><div class="blk t3"></div><div class="blk b"></div></div><div class="blk img"></div></div>
+          <div class="l-cards"><div class="blk card"></div><div class="blk card"></div><div class="blk card"></div></div>
+        </div>
+        <div class="layer final">
+          <div class="l-nav"><div class="logo">Horno<span>.</span>Sur</div><div class="links txt"><span>Carta</span><span>Encargos</span><span>Tienda</span></div></div>
+          <div class="l-hero"><div><h4 class="txt">Pan de masa madre, horneado esta mañana.</h4><p class="sub txt">Encarga antes de las 20:00 y recógelo mañana caliente.</p><span class="cta">Hacer mi encargo</span></div><div class="pic"></div></div>
+          <div class="l-cards"><div class="card"><i></i><span class="txt">Hogazas</span></div><div class="card"><i></i><span class="txt">Bollería</span></div><div class="card"><i></i><span class="txt">Tartas</span></div></div>
+          <div class="orders">Encargos hoy<b class="count">0</b></div>
+          <svg class="cursor" viewBox="0 0 24 24"><path d="M3 2l7 19 2.6-7.4L20 11z" fill="#15161C" stroke="#fff" stroke-width="1.5"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRABAJOS -->
+<section class="work" id="trabajos">
+  <div class="wrap work-head">
+    <h2>Algunas webs<br>recientes.</h2>
+    <p class="lead">Cada una con su objetivo: más reservas, más encargos o más ventas. Debajo de cada web, lo que consiguió.</p>
+  </div>
+  <div class="track-wrap">
+    <div class="track">
+      <article class="proj p1"><div class="shot"><div class="deco"></div><div class="in"><div class="mini-nav"><span>Verdea</span><span>Reservar</span></div><div class="big">Huertos urbanos para tu oficina</div><span class="pill">Pide una visita</span></div></div><div class="meta"><div><h3>Verdea</h3><p>Web corporativa B2B</p></div><span class="res">3× solicitudes</span></div></article>
+      <article class="proj p2"><div class="shot"><div class="deco"></div><div class="in"><div class="mini-nav"><span>Lumen Clínica</span><span>Cita</span></div><div class="big">Tu piel, explicada por dermatólogas</div><span class="pill">Reservar cita</span></div></div><div class="meta"><div><h3>Lumen Clínica</h3><p>Web + reservas online</p></div><span class="res">+64% citas</span></div></article>
+      <article class="proj p3"><div class="shot"><div class="deco"></div><div class="in"><div class="mini-nav"><span>Kiosko Bravo</span><span>Carrito</span></div><div class="big">Salsas picantes hechas en Cádiz</div><span class="pill">Comprar ahora</span></div></div><div class="meta"><div><h3>Kiosko Bravo</h3><p>Tienda online</p></div><span class="res">+41% ventas</span></div></article>
+      <article class="proj p4"><div class="shot"><div class="deco"></div><div class="in"><div class="mini-nav"><span>Norte Fisio</span><span>Llamar</span></div><div class="big">Vuelve a correr sin dolor</div><span class="pill">Primera sesión</span></div></div><div class="meta"><div><h3>Norte Fisio</h3><p>Landing de captación</p></div><span class="res">CPL −38%</span></div></article>
+      <article class="proj p5"><div class="shot"><div class="deco"></div><div class="in"><div class="mini-nav"><span>Ámbar Estudio</span><span>Proyectos</span></div><div class="big">Arquitectura para vivir despacio</div><span class="pill">Ver proyectos</span></div></div><div class="meta"><div><h3>Ámbar Estudio</h3><p>Portfolio de arquitectura</p></div><span class="res">2× contactos</span></div></article>
+      <article class="proj p6"><div class="shot"><div class="deco"></div><div class="in"><div class="mini-nav"><span>Casa Ruda</span><span>Mesa</span></div><div class="big">Cocina de mercado en Lavapiés</div><span class="pill">Reservar mesa</span></div></div><div class="meta"><div><h3>Casa Ruda</h3><p>Web de restaurante</p></div><span class="res">+52% reservas</span></div></article>
+    </div>
+  </div>
+  <p class="swipe-hint">Desliza para ver más trabajos.</p>
+</section>
+
+<!-- POR QUÉ YO -->
+<section class="why">
+  <div class="wrap why-grid">
+    <div>
+      <h2><span class="line">Una sola persona.</span><span class="line">Cero teléfono</span><span class="line">escacharrado.</span></h2>
+      <p class="lead" style="margin-top:28px">En una agencia, lo que pides pasa por un comercial, un diseñador y un programador. Cada paso pierde algo. Conmigo, quien te escucha es quien lo diseña y quien lo programa.</p>
+    </div>
+    <div class="compare">
+      <div class="hdr"><span>Agencia típica</span><span>Conmigo</span></div>
+      <div class="row-c"><div><h4>Con quién hablas</h4>Un comercial que traslada</div><div><h4>Con quién hablas</h4>Con quien hace tu web</div></div>
+      <div class="row-c"><div><h4>Plazo</h4>8 a 12 semanas</div><div><h4>Plazo</h4>4 semanas de media</div></div>
+      <div class="row-c"><div><h4>Diseño</h4>Plantilla retocada</div><div><h4>Diseño</h4>Hecho a medida para tu marca</div></div>
+      <div class="row-c"><div><h4>Velocidad</h4>Lenta por plugins</div><div><h4>Velocidad</h4>Carga en menos de 1 segundo</div></div>
+      <div class="row-c"><div><h4>Después de publicar</h4>Soporte por tickets</div><div><h4>Después de publicar</h4>Me escribes y te respondo yo</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CIFRAS -->
+<section class="numbers">
+  <div class="wrap">
+    <h2>En números.</h2>
+    <div class="nums">
+      <div class="num"><strong data-to="200" data-suf="+">0</strong><span>webs diseñadas y publicadas</span></div>
+      <div class="num"><strong data-to="7" data-suf=" años">0</strong><span>diseñando y programando a diario</span></div>
+      <div class="num"><strong data-to="95" data-suf="/100">0</strong><span>de nota media en velocidad (Google PageSpeed)</span></div>
+      <div class="num"><strong data-to="87" data-suf="%">0</strong><span>de clientes que vuelven o me recomiendan</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- OPINIONES (sustituir por reseñas reales antes de publicar) -->
+<section class="voices" data-placeholder="testimonios">
+  <div class="wrap">
+    <h2>Lo que dicen<br>mis clientes.</h2>
+    <span class="ex-tag">Reseñas de ejemplo</span>
+    <div class="quotes">
+      <figure class="q big"><blockquote>“En un mes teníamos web nueva y el doble de reservas. Lo mejor fue hablar siempre con la misma persona: entendió el negocio desde la primera llamada.”</blockquote><figcaption class="who"><i>MR</i><span><b>Marta R.</b>Lumen Clínica</span></figcaption></figure>
+      <figure class="q s1"><blockquote>“La tienda carga rapidísimo y por fin vendemos desde el móvil.”</blockquote><figcaption class="who"><i>JB</i><span><b>Javi B.</b>Kiosko Bravo</span></figcaption></figure>
+      <figure class="q s2"><blockquote>“Nos explicó cada decisión con datos. Volveremos a contar con él.”</blockquote><figcaption class="who"><i>LA</i><span><b>Laura A.</b>Ámbar Estudio</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section class="pricing" id="precios">
+  <div class="wrap">
+    <h2>Precios claros,<br>desde el principio.</h2>
+    <p class="lead" style="margin-top:24px">Precio cerrado antes de empezar. Pagas el 50% al arrancar y el 50% cuando la web está publicada.</p>
+    <div class="plans">
+      <div class="plan">
+        <h3>Landing</h3>
+        <div class="price">1.200 € <small>+ IVA</small></div>
+        <p class="desc">Una página pensada para un solo objetivo: que te contacten o te compren.</p>
+        <ul><li>Diseño a medida</li><li>Textos orientados a vender</li><li>Formulario y analítica</li><li>Lista en 2 semanas</li></ul>
+        <a class="btn" href="#contacto">Quiero una landing</a>
+      </div>
+      <div class="plan star">
+        <span class="tag">La más pedida</span>
+        <h3>Web de negocio</h3>
+        <div class="price">2.900 € <small>+ IVA</small></div>
+        <p class="desc">Tu web completa, hasta 8 páginas, lista para captar clientes.</p>
+        <ul><li>Todo lo de la landing</li><li>Hasta 8 páginas</li><li>Blog y SEO básico</li><li>Panel para editar tú los textos</li><li>Lista en 4 semanas</li></ul>
+        <a class="btn" href="#contacto">Quiero mi web</a>
+      </div>
+      <div class="plan">
+        <h3>Tienda online</h3>
+        <div class="price"><small class="pre">Desde</small>4.900 € <small>+ IVA</small></div>
+        <p class="desc">Para vender tus productos online, con pagos y envíos integrados.</p>
+        <ul><li>Catálogo y carrito a medida</li><li>Pagos con tarjeta y Bizum</li><li>Envíos y facturas automáticos</li><li>Lista en 6 semanas</li></ul>
+        <a class="btn" href="#contacto">Quiero vender online</a>
+      </div>
+    </div>
+    <p class="guarantee"><b>Garantía de 30 días:</b> si algo no funciona como acordamos, lo arreglo sin coste.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap faq-grid">
+    <h2>Preguntas<br>frecuentes.</h2>
+    <div>
+      <details><summary>¿Cuánto tarda en estar lista mi web?</summary><p>Una landing, 2 semanas. Una web de negocio, 4. Una tienda online, unas 6. Te doy la fecha exacta antes de empezar.</p></details>
+      <details><summary>¿Podré cambiar los textos yo?</summary><p>Sí. Te dejo un panel sencillo para editar textos, fotos y precios sin tocar código, y una sesión de 30 minutos para enseñarte.</p></details>
+      <details><summary>¿Y si no tengo textos ni fotos?</summary><p>Los textos los escribo yo a partir de una entrevista contigo. Para las fotos te recomiendo fotógrafo o uso imágenes de banco bien elegidas.</p></details>
+      <details><summary>¿Qué pasa después de publicar?</summary><p>Tienes 30 días de soporte incluido. Después, si quieres, un mantenimiento de 60 €/mes con copias de seguridad, actualizaciones y cambios pequeños.</p></details>
+      <details><summary>¿Trabajas con clientes fuera de España?</summary><p>Sí. Hago webs en español e inglés y trabajo en remoto con reuniones por videollamada.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="end" id="contacto">
+  <div class="wrap">
+    <h2>¿Hablamos de tu web?</h2>
+    <p class="lead">Cuéntame qué haces y qué necesitas. Te respondo en menos de 24 horas con una propuesta y un precio cerrado.</p>
+    <div class="hero-ctas">
+      <a class="btn sun" href="mailto:hello@ginescollzurita.com?subject=Presupuesto%20web">Pedir presupuesto</a>
+      <a class="btn ghost" style="color:#fff;border-color:rgba(255,255,255,.6)" href="https://www.linkedin.com/in/gines-coll-zurita-61520662" target="_blank" rel="noopener">Escribirme por LinkedIn</a>
+    </div>
+  </div>
+  <div class="marquee" aria-hidden="true"><span>Diseño + código</span><span>Diseño + código</span><span>Diseño + código</span></div>
+</section>
+</main>
+<footer><div class="wrap"><span>© 2026 Ginés Coll Zurita</span><a href="mailto:hello@ginescollzurita.com">hello@ginescollzurita.com</a></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  var onScroll=function(){nav.classList.toggle('solid',window.scrollY>20)};
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // Contadores: sin GSAP también deben mostrar la cifra final
+  var nums=[].slice.call(document.querySelectorAll('.num strong'));
+  function finalNums(){nums.forEach(function(n){n.textContent=n.dataset.to+n.dataset.suf})}
+  var heroGrid=document.querySelector('.hero-grid');
+  function showHero(){heroGrid.style.visibility='visible'}
+  setTimeout(showHero,2500);
+  if(!window.gsap){showHero();finalNums();return}
+
+  gsap.registerPlugin(ScrollTrigger,SplitText);
+  var mm=gsap.matchMedia();
+
+  mm.add("(prefers-reduced-motion: reduce)",function(){showHero();finalNums();document.querySelector('.url-t').textContent='hornosur.es'});
+
+  mm.add({desk:"(min-width: 861px) and (prefers-reduced-motion: no-preference)",mob:"(max-width: 860px) and (prefers-reduced-motion: no-preference)"},function(ctx){
+    var desk=ctx.conditions.desk;
+
+    // 1. Entrada del hero: el único momento orquestado al cargar
+    document.fonts.ready.then(function(){
+      var split=SplitText.create('.split-h .row',{type:'lines',mask:'lines'});
+      var tl=gsap.timeline({defaults:{ease:'expo.out'},onStart:showHero});
+      tl.from(split.lines,{yPercent:110,duration:1.1,stagger:.12})
+        .from('.portrait .frame',{clipPath:'inset(100% 0 0 0 round 28px)',duration:1.2,ease:'expo.inOut'},0.1)
+        .from('.portrait img',{scale:1.35,duration:1.6},0.2)
+        .from('.sticker',{scale:0,rotate:-30,duration:.8,ease:'back.out(2)'},0.9)
+        .from(['.avail','.hero .lead','.hero-ctas','.proof'],{autoAlpha:0,y:20,duration:.8,stagger:.08},0.5);
+      ScrollTrigger.refresh();
+    });
+
+    // Parallax suave del retrato al salir del hero
+    gsap.to('.portrait img',{yPercent:12,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+
+    // 2. La secuencia fijada: el boceto se convierte en web
+    var steps=[].slice.call(document.querySelectorAll('.steps li'));
+    var urlT=document.querySelector('.url-t');
+    var counter={v:0},countEl=document.querySelector('.count');
+    function setStep(i){steps.forEach(function(s,k){s.classList.toggle('on',k===i)})}
+    var b=gsap.timeline({
+      defaults:{ease:'none'},
+      scrollTrigger:{trigger:'.build',start:'top top',end:desk?'+=2600':'+=2000',pin:'.build-pin',scrub:1,
+        onUpdate:function(st){var p=st.progress;setStep(p<.22?0:p<.5?1:p<.75?2:3);urlT.textContent=p<.75?'boceto-v'+(p<.22?1:p<.5?2:3):'hornosur.es'}}
+    });
+    b.to({},{duration:.6})
+     .to('.final',{clipPath:'inset(0 0% 0 0)',duration:1.2,ease:'power1.inOut'})
+     .to('.wire',{autoAlpha:0,duration:.3},'<.9')
+     .to('.final .txt',{opacity:1,stagger:.12,duration:.5})
+     .from('.final .pic',{scale:.6,rotate:-8,duration:.8,ease:'back.out(1.6)'},'<')
+     .to('.url .lock',{opacity:1,duration:.2})
+     .to('.cursor',{opacity:1,duration:.2},'<')
+     .fromTo('.cursor',{left:'80%',top:'90%'},{left:'22%',top:'62%',duration:.8,ease:'power2.inOut'})
+     .to('.final .cta',{scale:.92,duration:.1,yoyo:true,repeat:1})
+     .to('.orders',{opacity:1,y:0,duration:.3})
+     .to(counter,{v:27,duration:1,onUpdate:function(){countEl.textContent=Math.round(counter.v)}},'<')
+     .to({},{duration:.4});
+
+    // 3. Trabajos: scroll horizontal fijado en escritorio, swipe nativo en móvil
+    if(desk){
+      var track=document.querySelector('.track');
+      var dist=function(){return Math.max(0,track.scrollWidth-window.innerWidth)};
+      var h=gsap.to(track,{x:function(){return -dist()},ease:'none',
+        scrollTrigger:{trigger:'.work',start:'top top',end:function(){return '+='+dist()},pin:true,scrub:1,invalidateOnRefresh:true}});
+      gsap.utils.toArray('.shot .in').forEach(function(el){
+        gsap.to(el,{scale:1,ease:'none',scrollTrigger:{trigger:el.parentNode,containerAnimation:h,start:'left right',end:'center center',scrub:true}});
+      });
+      gsap.utils.toArray('.shot .deco').forEach(function(el){
+        gsap.fromTo(el,{xPercent:40},{xPercent:-20,ease:'none',scrollTrigger:{trigger:el.parentNode,containerAnimation:h,start:'left right',end:'right left',scrub:true}});
+      });
+    }
+
+    // 4. Titular de "por qué yo": las líneas se ensanchan con el scroll (tipografía variable)
+    gsap.fromTo('.why h2 .line',{fontVariationSettings:'"wdth" 75',xPercent:-6,opacity:.15},{fontVariationSettings:'"wdth" 100',xPercent:0,opacity:1,stagger:.15,ease:'none',
+      scrollTrigger:{trigger:'.why h2',start:'top 85%',end:'top 35%',scrub:1}});
+
+    // 5. Cifras que cuentan
+    nums.forEach(function(n){
+      var o={v:0},to=+n.dataset.to,suf=n.dataset.suf;
+      gsap.to(o,{v:to,duration:1.8,ease:'power3.out',scrollTrigger:{trigger:n,start:'top 85%',once:true},
+        onUpdate:function(){n.textContent=Math.round(o.v)+suf}});
+    });
+
+    // 6. Marquee ligado al scroll
+    gsap.fromTo('.marquee',{xPercent:0},{xPercent:-35,ease:'none',scrollTrigger:{trigger:'.end',start:'top bottom',end:'bottom bottom',scrub:true}});
+
+    return function(){};
+  });
+})();
+</script>
+</body>
+</html>
